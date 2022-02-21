@@ -9,30 +9,30 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import myproject.carrental.business.abstracts.CarService;
+import myproject.carrental.business.abstracts.BrandService;
 import myproject.carrental.core.utilities.results.DataResult;
 import myproject.carrental.core.utilities.results.Result;
-import myproject.carrental.entities.concretes.Car;
+import myproject.carrental.entities.concretes.Brand;
 
 @RestController
-@RequestMapping("/api/cars")
-public class CarsController {
-	
-	private CarService carService;
+@RequestMapping("/api/brands")
+public class BrandsController {
+
+	private BrandService brandService;
 
 	@Autowired
-	public CarsController(CarService carService) {
+	public BrandsController(BrandService brandService) {
 		super();
-		this.carService = carService;
+		this.brandService = brandService;
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<Car>> getAll(){
-		return this.carService.getAll();
+	public DataResult<List<Brand>> getAll(){
+		return this.brandService.getAll();
 	}
 	
 	@PostMapping("/add")
-	public Result add(@RequestBody Car car) {
-		return this.carService.add(car);
+	public Result add(@RequestBody Brand brand) {
+		return this.brandService.add(brand);
 	}
 }
